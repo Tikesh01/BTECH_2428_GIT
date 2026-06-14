@@ -57,12 +57,38 @@ public:
             cout<<"The Linked list is empty!";
             return -1;
         }
-        int data = tail->data;
-        tail = NULL;
-        cout<<"POP BACK "<<data<<endl;
+        node* temp = head;
+        while (temp->next != tail)
+        {
+            temp = temp->next;
+        }
+
+        int data = temp->data;
+        temp->next = NULL;
+        delete tail;
+        tail = temp;
+        
         return data;
     }
-    
+    void insert(int val, int pos){ // 0 based
+        if(pos<=0){
+            push_front(val);
+            return;
+        }
+        node* temp = head;
+        while (temp!=NULL && pos>1)
+        {
+            temp = temp->next;
+            pos--;
+        }
+        // if(temp == NULL){
+        //     push_back(val);
+        //     return;
+        // }
+        node* newNode = new node(val);
+        newNode->next = temp->next;
+        temp->next = newNode;
+    }
     void traverse(){
         node* temp = head;
 
@@ -82,10 +108,17 @@ int main(){
     ll->push_back(3);
 
     ll->traverse();
+    ll->insert(5, 3);
+    // ll->pop_front();
+    // ll->pop_back();
 
-    ll->pop_front();
-    ll->pop_back();
+    ll->traverse();
 
+    ll->push_front(7);
+    ll->insert(4, 1);
+    ll->insert(3, 1);
+    ll->insert(10, 0);
+    ll->insert(0, 8);
     ll->traverse();
 
     return 0;
