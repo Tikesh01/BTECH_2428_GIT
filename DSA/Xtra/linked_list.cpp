@@ -14,11 +14,27 @@ public:
 class list{
     node* head; 
     node* tail;
+    node* temp;
 public:
     list(){
         head = tail = NULL;
     }
-
+    int get(int index) {
+        if(head == NULL){
+            return -1;
+        }
+        if(index<0){
+            return -1;
+        }
+        temp = head;
+        for(int i=0; i<index; i++){
+            temp = temp->next;
+            if(temp == NULL){
+                return -1;
+            }
+        }
+        return temp->data;
+    }
     void push_front(int val){
         node* newNode = new node(val);
         if(head == NULL){
@@ -103,23 +119,34 @@ public:
 
 int main(){ 
     list* ll = new list();
-    ll->push_front(1);
-    ll->push_front(33);
+
+    // cout<<ll->get(0)<<endl;
+    // cout<<ll->get(1)<<endl;
+    
+    // ll->push_front(1);
+    // cout<<ll->get(0)<<endl;
+    // cout<<ll->get(1)<<endl;
+
+    // ll->push_front(33);
+    // cout<<ll->get(0)<<endl;
+    // cout<<ll->get(1)<<endl;
+    // cout<<ll->get(2)<<endl;
+
     ll->push_back(3);
 
     ll->traverse();
-    ll->insert(5, 3);
-    // ll->pop_front();
-    // ll->pop_back();
+    // ll->insert(5, 3);
+    // // ll->pop_front();
+    // // ll->pop_back();
 
-    ll->traverse();
+    // ll->traverse();
 
-    ll->push_front(7);
-    ll->insert(4, 1);
-    ll->insert(3, 1);
-    ll->insert(10, 0);
-    ll->insert(0, 8);
-    ll->traverse();
+    // ll->push_front(7);
+    // ll->insert(4, 1);
+    // ll->insert(3, 1);
+    // ll->insert(10, 0);
+    // ll->insert(0, 8);
+    // ll->traverse();
 
     return 0;
 }
