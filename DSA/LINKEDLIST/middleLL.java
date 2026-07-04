@@ -1,4 +1,6 @@
 
+package DSA.LINKEDLIST;
+
 class Node {
     int data;
     Node next;
@@ -27,6 +29,12 @@ class list {
         Node newNode = new Node(val);
         newNode.next = head;
         head = newNode;
+    }
+
+    list(int[] arr) {
+        for (int i = arr.length - 1; i >= 0; i--) {
+            this.push_front(arr[i]);
+        }
     }
 
     void traverse() {
