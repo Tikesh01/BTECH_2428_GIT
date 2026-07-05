@@ -1,5 +1,5 @@
 
-package DSA.LINKEDLIST;
+package LINKEDLIST;
 
 class Node {
     int data;
@@ -27,11 +27,18 @@ class list {
 
     void push_front(int val) {
         Node newNode = new Node(val);
-        newNode.next = head;
-        head = newNode;
+        if (head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
     }
 
     list(int[] arr) {
+        head = null;
+        tail = null;
         for (int i = arr.length - 1; i >= 0; i--) {
             this.push_front(arr[i]);
         }
@@ -87,11 +94,13 @@ class list {
 
 public class middleLL {
     void main() {
-        list l = new list();
+        int[] arr = {1, 2, 3, 34, 2, 1};
+        list l = new list(arr);
         // l.push_front(4);
-        l.push_front(3);
-        l.push_front(2);
-        l.push_front(1);
+        // l.push_front(3);
+        // l.push_front(2);
+        // l.push_front(1);
+
         l.traverse();
         Node middle = l.middleByLen();
         l.traverse(middle);
