@@ -1,0 +1,1 @@
+//    The ternary operator, also known as the conditional operator, is a shorthand way of writing an `if-else` statement in many programming languages, including [C]). It is represented by the symbols `?:` and is used to evaluate a condition and return one of two values based on whether the condition is true or false.
